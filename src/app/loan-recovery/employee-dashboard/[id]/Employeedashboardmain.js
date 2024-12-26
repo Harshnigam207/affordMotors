@@ -302,6 +302,8 @@ export default function EmployeeDashboardMain({ id, username, pageno, vehicleDat
           </div>
           <div className="heading-div">
             <h1>DashBoard</h1>
+
+            <h1>DashBoard</h1>
             <h2>Hi {username}. Welcome back to Employee Dashboard.</h2>
           </div>
 
