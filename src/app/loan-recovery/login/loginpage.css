@@ -1,0 +1,328 @@
+.login_page_container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+    background-color: white;
+}
+
+.rounded-edge {
+    aspect-ratio: 2/3;
+    clip-path: ellipse(100% 85% at 0 50%);
+    animation-name: login-img;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+}
+
+
+.login_image_div {
+    height: 100vh;
+    width: 37vw;
+    /*width: 50vw;*/
+    background-color: var(--dark-gray);
+    position: relative;
+    background-image: url("/assets/loginpage/login_car_img4.jpg");
+    background-size: 100% 100%;
+}
+
+.login_page_form_container {
+    width: 63vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation-name: login-form;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+}
+
+@keyframes login-img {
+    0% {
+        left: -50vw;
+        opacity: 0.3;
+    }
+
+    100% {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes login-form {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.login_page_h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--dark-gray);
+}
+
+.login_page_h2 {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--dark-gray);
+}
+
+.login_input {
+    border: 1px solid var(--dark-gray);
+    border-radius: 5px;
+    width: 40%;
+    color: var(--dark-gray);
+}
+
+.login_page_form {
+    width: 60%;
+    color: var(--dark-gray);
+    font-weight: 400;
+}
+
+.form-control1 {
+    border: none;
+    position: relative;
+    border-radius: 0;
+    padding: 5px 10px;
+    width: 100%;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.form-control1:focus {
+    border: none;
+    outline: none;
+}
+
+.form-control1::placeholder {
+    color: var(--dark-gray);
+}
+
+
+
+.form-control-wrapper {
+    position: relative;
+
+}
+
+.form-control-wrapper:hover .form-control-line {
+    width: 100%;
+}
+
+.form-control-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-gray);
+    border: 2px solid var(--dark-gray);
+    position: relative;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s linear;
+
+}
+
+.login_button {
+    width: 100%;
+    background-color: var(--dark-gray);
+    padding: 10px;
+    color: var(--fourth-shade);
+    border-radius: 5px;
+    border: 2px solid var(--dark-gray);
+    font-size: 20px;
+    z-index: 0;
+    font-weight: 700;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.login_button:not(:hover) .login-button-span {
+    color: white;
+}
+
+.login_button .cursor-ball {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, white, #D1D1D1);
+
+
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.login-button-span {
+    position: relative;
+    z-index: 2;
+    transition: 0.1s color linear;
+}
+
+/* Ball visibility when hovering over the button */
+.login_button:hover .cursor-ball {
+    opacity: 1;
+}
+
+.login-check {
+    display: flex;
+    width: 40%;
+    height: 20px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -30px;
+    gap: 10vw;
+}
+
+.login-check {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.login-check-underline {
+    border-bottom: 3px solid var(--dark-gray);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    /* For Firefox */
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+}
+
+.inner-error-message-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 868px) {
+
+    @keyframes login-img {
+        0% {
+            top: -60vh;
+            opacity: 0.3;
+        }
+
+        100% {
+            top: 0;
+            opacity: 1;
+        }
+    }
+
+    .login_page_container {
+        position: relative;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login_page_form {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-control-wrapper {
+        width: 75vw;
+
+    }
+
+    .login-check {
+        margin-top: 20px;
+        width: 75vw;
+    }
+
+    .login_button {
+        margin-bottom: 20px;
+        width: 75vw;
+
+    }
+
+    .inner-error-message-div {
+        width: 75%;
+    }
+
+    .form-control1 {
+        width: 75vw;
+    }
+
+    .form-control-line {
+        width: 75vw;
+    }
+
+    .login_page_h1 {
+        width: 75vw;
+    }
+
+    .login_page_h2 {
+        width: 75vw;
+    }
+
+    .inner-line {
+        width: 100% !important;
+    }
+
+    .inner-input {
+        width: 100% !important;
+    }
+
+    .inner-container {
+        width: 75vw;
+    }
+
+    .rounded-edge {
+        --c: 80px;
+        /* control the curvature (works with percentage) */
+        height: 60vh;
+        aspect-ratio: 3/2;
+        /* you can also update the 60%  */
+        mask: radial-gradient(50% var(--c) at bottom, #0000 calc(100% - 2px), #000);
+        background: #40C0CB;
+        background-position: center top;
+        clip-path: none;
+        animation-name: login-img;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+    }
+
+
+    .login_image_div {
+        width: 100vw;
+        /*width: 50vw;*/
+        background-color: var(--dark-gray);
+        position: relative;
+        background-image: url("/assets/loginpage/login_car_img5.jpeg");
+        background-size: cover;
+    }
+
+    .login_page_container {
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 420px) {
+    .long-messege {
+        font-size: 13px !important;
+    }
+}
