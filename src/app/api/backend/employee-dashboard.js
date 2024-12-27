@@ -172,7 +172,7 @@ export async function taskOverallDetails(id) {
     const db = await getDB();
     const tasksCollection = db.collection("employee_tasks");
 
-    const OverallCount = await tasksCollection.countDocuments({ user_id: id });
+    const OverallCount = await tasksCollection.countDocuments({ user_id: id, cancelled: { $ne: true }, completed: { $ne: true } });
     const CompletedCount = await tasksCollection.countDocuments({ user_id: id, completed: true });
     const CancelledCount = await tasksCollection.countDocuments({ user_id: id, cancelled: true });
 
