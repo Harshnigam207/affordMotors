@@ -7,7 +7,15 @@ export async function fetchEmployeeTasks(id, pageno) {
     const db = await getDB();
     const tasksCollection = db.collection("employee_tasks");
 
-    pageno = parseInt(pageno) || 1;
+    pageno = parseInt(pageno);
+    if (pageno <= 0) {
+      pageno = 1;
+    }
+    const taskCount = await tasksCollection.countDocuments({ user_id: id, cancelled: { $ne: true }, completed: { $ne: true } });
+    const totalPages = Math.ceil(taskCount / 12);
+    if (pageno > totalPages) {
+      pageno = totalPages;
+    }
 
     let tasks;
     if (pageno === 1) {
@@ -44,8 +52,14 @@ export async function paginationDetails(id, pageno) {
     const tasksCollection = db.collection("employee_tasks");
 
     pageno = parseInt(pageno);
+    if (pageno <= 0) {
+      pageno = 1;
+    }
     const taskCount = await tasksCollection.countDocuments({ user_id: id, cancelled: { $ne: true }, completed: { $ne: true } });
     const totalPages = Math.ceil(taskCount / 12);
+    if (pageno > totalPages) {
+      pageno = totalPages;
+    }
 
     if (pageno === 1) {
       return [

@@ -1,0 +1,171 @@
+.overall-cards-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cards-container {
+    width: 92%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    min-width: 280px;
+    height: 120px;
+    background-color: var(--dark-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+
+.success-link:hover~.card-after-element {
+    height: 850px;
+    width: 850px;
+}
+
+.success-link:hover~.card-before-element {
+    z-index: 1;
+}
+
+.success-link:not(:hover)~.card-before-element {
+    z-index: 2;
+}
+
+.danger-link:hover~.card-before-element {
+
+    height: 850px;
+    width: 850px;
+}
+
+.card-after-element {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: #4aa34d;
+    transform: translate(-50%, 50%);
+    z-index: 2;
+    transition: 0.2s linear height, 0.2s linear width;
+}
+
+
+.card-before-element {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    z-index: 2;
+    background-color: #e83e3b;
+    transform: translate(50%, 50%);
+    transition: 0.2s linear height, 0.2s linear width, 0.1s linear z-index;
+
+}
+
+
+.card-header1 {
+    color: var(--dark-gray);
+    position: absolute;
+    background-color: white;
+    font-weight: 700;
+    font-size: 15px;
+    z-index: 3;
+    width: 80%;
+    height: 50px;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.card-footer1 {
+    color: white;
+    font-weight: 600;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font-size: 14px;
+    display: flex;
+    gap: 20%;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-link1 {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.success-link {
+    position: relative;
+    text-decoration: none;
+    z-index: 3;
+    padding: 5px 10px;
+    /*background-color: #4aa34d;*/
+    border-radius: 12px;
+
+}
+
+.success-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.success-link:hover::after {
+    width: 100%;
+}
+
+.danger-link {
+    position: relative;
+    text-decoration: none;
+    z-index: 3;
+    padding: 5px 15px;
+    /*background-color: #e83e3b;*/
+    border-radius: 12px;
+}
+
+.danger-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.danger-link:hover::after {
+    width: 100%;
+}

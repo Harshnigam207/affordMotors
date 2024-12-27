@@ -155,7 +155,7 @@ export default function Loginform() {
       }
       if (response.resultCode == 200) {
         if (response.employee === true) {
-          router.push(`/loan-recovery/employee-dashboard/${response._id.toString()}?username=${response.username}&pageno=1`);
+          router.push(`/loan-recovery/employee-dashboard/${response._id.toString()}/${response.username}/1`);
         }
       } else {
         alert(response.result);
@@ -178,15 +178,15 @@ export default function Loginform() {
       }
       if (response.resultCode == 200) {
         if (response.admin === true) {
-          router.push(`/loan-recovery/admin-dashboard/${response._id.toString()}?username=${response.username}&pageno=1`);
+          router.push(`/loan-recovery/admin-dashboard/${response._id.toString()}/${response.username}/1`);
         }
 
         if (response.employee === true) {
-          router.push(`/loan-recovery/employee-dashboard/${response._id.toString()}?username=${response.username}&pageno=1`);
+          router.push(`/loan-recovery/employee-dashboard/${response._id.toString()}/${response.username}/1`);
         }
 
         if (response.moderator === true) {
-          router.push(`/loan-recovery/moderator-dashboard/${response._id.toString()}?username=${response.username}&pageno=1`);
+          router.push(`/loan-recovery/moderator-dashboard/${response._id.toString()}/${response.username}/1`);
         }
       } else {
         alert(response.result);
