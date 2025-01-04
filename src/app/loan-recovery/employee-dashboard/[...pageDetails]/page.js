@@ -1,7 +1,7 @@
 import "./employee-dashboard.css";
 import { notFound } from "next/navigation";
 import EmployeeDashboardMain from "./Employeedashboardmain";
-import { fetchEmployeeTasks, paginationDetails, taskOverallDetails } from "../../../api/backend/employee-dashboard";
+import { fetchEmployeeTasks, paginationDetails, taskOverallDetails, fetchEmployeeData } from "../../../api/backend/employee-dashboard";
 
 export default async function EmployeeDashboard({ params }) {
   const { pageDetails } = await params;
@@ -15,6 +15,7 @@ export default async function EmployeeDashboard({ params }) {
     return null;
   }
   const tasksData = await taskOverallDetails(id);
+  const employeedata = await fetchEmployeeData(id);
 
-  return <EmployeeDashboardMain id={id} username={username} pageno={pageno} vehicleData={vehicleData} paginationData={paginationData} tasksData={tasksData} />;
+  return <EmployeeDashboardMain id={id} username={employeedata.username} pageno={pageno} vehicleData={vehicleData} paginationData={paginationData} tasksData={tasksData} employeedata={employeedata} />;
 }

@@ -1,0 +1,282 @@
+.heading-div2 {
+    color: var(--dark-gray);
+    width: 93%;
+    padding: 10px;
+    display: flex;
+
+}
+
+.heading-div2 h1 {
+    font-weight: 600;
+    font-size: 20px;
+    border-bottom: 2px solid var(--dark-gray);
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.employee-profile-container{
+    width: 89.5%;
+    margin-bottom: 50px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:30px;
+}
+
+.main-profile{
+    width: 90%;
+    min-height: 300px;
+    gap: 10px;
+    color: var(--dark-gray);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    position: relative;
+    border-radius: 14px;
+    background-color: white;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), 0 0 3px rgba(0, 0, 0, 0.08);
+
+    overflow: hidden;
+}
+
+.slanted-edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    --p: 70px;
+    height: 100%;
+    width: 250px;
+    aspect-ratio: 1;
+    clip-path: polygon(0 0,100% 0,calc(100% - var(--p)) 100%,0 100%);
+    background: var(--dark-gray);
+    background-image: url("/assets/user_dashboard/car-bg2.jpg");
+    background-size: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.user-img-parent{
+    min-width: 280px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+}
+
+.user-img{
+    min-width: 180px;
+    min-height: 180px;
+    background-color: #4aa34d;
+    align-self: flex-start;
+    z-index: 2;
+    margin: auto;
+    background-image: url("/assets/user_dashboard/user_img.png");
+    background-size: 80%;
+    background-position: -200px;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    display: none;
+} 
+
+.profile-element{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    z-index: 2;
+
+    h1{
+        font-weight: 750;
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: var(--dark-gray);
+        border-bottom: 1.3px solid #A6A6A6;
+        padding: 6px 20px;
+        width: 97%;
+    }
+
+    span{
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: var(--dark-gray);
+        margin-right: 10px;
+        user-select: none;
+    }
+
+    p{
+        width: 90%;
+        padding: 6px 20px;
+        font-weight: 600;
+        color: #4F4F4F;
+        font-size: 16px;
+        max-width: 300px;
+        text-wrap: nowrap;
+    }
+}
+
+
+.options-bar{
+    min-height: 45px;
+    color: var(--dark-gray);
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 30px;
+    background-color: white;
+    overflow: hidden;
+    flex-wrap: wrap;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), 0 0 3px rgba(0, 0, 0, 0.08);
+
+
+
+
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 200px;
+        padding: 6px 0;
+        border-radius: 30px;
+        font-weight: 700;
+        background-color: var(--dark-gray);
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), 0 0 3px rgba(0, 0, 0, 0.08);
+
+        color: white;
+        margin: 6px 10px;
+        
+    }
+}
+
+.modal{
+    color: var(--dark-gray);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), 0 0 3px rgba(0, 0, 0, 0.08);
+    
+    .modal-header{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: relative;
+
+        h1{
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--dark-gray);
+            
+        }
+
+        h3{
+            font-weight: 470;
+            font-size: 14px;
+            color: var(--light-gray);
+        }
+
+        button{
+            position: absolute;
+            right: 14px;
+            top: 14px;
+
+        }
+    }
+
+    .modal-body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .form-group{
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+            text-wrap: nowrap;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-gray);
+
+            label{
+                color: var(--dark-gray);
+            }
+
+            input{
+                width: 70%;
+                float: right;
+                border: 2px solid var(--light-gray);
+                outline: none;
+            }
+
+            input:focus{
+                outline: none;
+            }
+
+            select{
+                width: 70%;
+                float: right;
+                border: 2px solid var(--light-gray);
+                outline: none;
+            }
+
+            
+        }
+        button{
+            color: white;
+            background-color: var(--dark-gray);
+            border-radius: 30px;
+            padding: 5px 20px;
+            font-weight: 700;
+            margin-top: 10px;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.1), 0 0 3px rgba(0, 0, 0, 0.08);
+        }
+        
+    }
+}
+
+@media (max-width: 768px) {
+   .main-profile{
+    flex-direction: column;
+
+   }
+
+
+   .slanted-edge{
+    width: 100%;
+    height: 270px;
+    clip-path: polygon(0 0,100% 0,100% calc(100% - var(--p)),0 100%);
+   }
+
+   .user-img-parent{
+    margin-top: 30px;
+    height: 180px;
+    margin-bottom: 70px;
+    background-color: transparent;
+   }
+
+   .profile-element{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+        text-align: center;
+    }
+
+    p{
+        text-align: center;
+    }
+   }
+
+   .options-bar{
+    justify-content: center;
+    align-items: center;
+   }
+}

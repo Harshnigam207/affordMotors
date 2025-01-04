@@ -7,8 +7,9 @@ import Popup from "../../../components/employee-dashboard/Popup/Popup";
 import Pagination from "../../../components/employee-dashboard/Pagination/Pagination";
 import VehicleCards from "../../../components/employee-dashboard/VehicleCards/VehicleCards";
 import VehicleForm from "../../../components/employee-dashboard/VehicleForm/VehicleForm";
+import EmployeeProfile from "../../../components/employee-dashboard/EmployeeProfile/EmployeeProfile";
 
-export default function EmployeeDashboardMain({ id, username, pageno, vehicleData, paginationData, tasksData }) {
+export default function EmployeeDashboardMain({ id, username, pageno, vehicleData, paginationData, tasksData, employeedata }) {
   const [toolbarShow, setToolbarShow] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [makeVehicleVisible, setMakeVehicleVisible] = useState(false);
@@ -23,6 +24,14 @@ export default function EmployeeDashboardMain({ id, username, pageno, vehicleDat
   const containerRef = useRef(null);
   const [selectedVehicle, setSelectedVehicle] = useState({});
   const mainRef = useRef(null);
+  const [isProfilePage, setIsProfilePage] = useState(false);
+  const profileRef = useRef(null);
+
+  useEffect(() => {
+    if (mainRef.current && profileRef.current && isProfilePage) {
+      profileRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [isProfilePage]);
 
   useEffect(() => {
     async function fetchData() {
@@ -75,7 +84,7 @@ export default function EmployeeDashboardMain({ id, username, pageno, vehicleDat
 
   return (
     <>
-      <div className="employee-page-container" ref={containerRef} style={{ filter: cancelVehicleVisible || makeVehicleVisible || makeVehicleErrorVisible ? "brightness(0.4)" : "none" }}>
+      <div className="employee-page-container" ref={containerRef} style={{ filter: makeVehicleVisible ? "brightness(0.4)" : "none" }}>
         {isMobile ? (
           <div className={toolbarShow ? "employee-toolbar-enter employee-toolbar-responsive" : "employee-toolbar-leave employee-toolbar-responsive"}>
             <div style={{ display: "flex", height: "50px", width: "150px", alignItems: "center", justifyContent: "center", gap: "3px" }}>
@@ -86,35 +95,77 @@ export default function EmployeeDashboardMain({ id, username, pageno, vehicleDat
               <hr className="employee-bg-line" />
             </center>
             <div className="employee-toolbar-options">
-              <button className="employee-toolbar-button employee-icons-container" style={{ borderBottom: "none", marginLeft: "15px" }}>
+              <button className="employee-toolbar-button employee-icons-container2">
                 <span>
                   <b>
                     <i>{username}</i>
                   </b>
                 </span>
               </button>
-              <button className="employee-toolbar-button employee-icons-container mt-3">
+              <motion.div
+                className="employee-toolbar-button employee-icons-container mt-3"
+                initial={{ backgroundColor: "#2E2E2E" }}
+                animate={{
+                  backgroundColor: !isProfilePage ? "#9129ac" : "#2E2E2E",
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: [0.43, 0.13, 0.28, 0.96],
+                }}
+                whileHover={{
+                  backgroundColor: !isProfilePage ? "#a84cbd" : "#3A3A3A",
+                }}
+                onClick={() => setIsProfilePage(false)}
+              >
                 <span className="material-icons employee-icons" style={{ fontSize: "20px" }}>
                   directions_bus
                 </span>
                 <span>Vehicles</span>
-              </button>
-              <button className="employee-toolbar-button employee-icons-container">
+              </motion.div>
+
+              <motion.div
+                className="employee-toolbar-button employee-icons-container"
+                initial={{ backgroundColor: "#2E2E2E" }}
+                animate={{
+                  backgroundColor: isProfilePage ? "#9129ac" : "#2E2E2E",
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: [0.43, 0.13, 0.28, 0.96],
+                }}
+                whileHover={{
+                  backgroundColor: isProfilePage ? "#a84cbd" : "#3A3A3A",
+                }}
+                onClick={() => {
+                  setIsProfilePage(true);
+                }}
+              >
                 <img src="/assets/user_dashboard/user_icon.png" alt="usericonimg" className="employee-icons" style={{ height: "22px", width: "22px" }} />
                 <span>Profile</span>
-              </button>
+              </motion.div>
             </div>
             <div className="employee-toolbar-bottom">
               <center>
                 <hr className="employee-bg-line line-below" />
               </center>
               <div className="employee-toolbar-bottom-options">
-                <div className="employee-icons-container" style={{ marginBottom: "20px" }}>
+                <motion.div
+                  className="employee-icons-container"
+                  style={{ marginBottom: "20px" }}
+                  initial={{ backgroundColor: "#2E2E2E" }}
+                  transition={{
+                    duration: 0.3,
+                    ease: [0.43, 0.13, 0.28, 0.96],
+                  }}
+                  whileHover={{
+                    backgroundColor: "#3A3A3A",
+                  }}
+                >
                   <span className="material-icons employee-icons" style={{ fontSize: "20px", marginLeft: "3px" }}>
                     logout
                   </span>
                   <span>Logout</span>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -128,35 +179,77 @@ export default function EmployeeDashboardMain({ id, username, pageno, vehicleDat
               <hr className="employee-bg-line" />
             </center>
             <div className="employee-toolbar-options">
-              <button className="employee-toolbar-button employee-icons-container" style={{ borderBottom: "none", marginLeft: "15px" }}>
+              <button className="employee-toolbar-button employee-icons-container2">
                 <span>
                   <b>
                     <i>{username}</i>
                   </b>
                 </span>
               </button>
-              <button className="employee-toolbar-button employee-icons-container mt-3">
+              <motion.div
+                className="employee-toolbar-button employee-icons-container mt-3"
+                initial={{ backgroundColor: "#2E2E2E" }}
+                animate={{
+                  backgroundColor: !isProfilePage ? "#9129ac" : "#2E2E2E",
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: [0.43, 0.13, 0.28, 0.96],
+                }}
+                whileHover={{
+                  backgroundColor: !isProfilePage ? "#a84cbd" : "#3A3A3A",
+                }}
+                onClick={() => setIsProfilePage(false)}
+              >
                 <span className="material-icons employee-icons" style={{ fontSize: "20px" }}>
                   directions_bus
                 </span>
                 <span>Vehicles</span>
-              </button>
-              <button className="employee-toolbar-button employee-icons-container">
+              </motion.div>
+
+              <motion.div
+                className="employee-toolbar-button employee-icons-container"
+                initial={{ backgroundColor: "#2E2E2E" }}
+                animate={{
+                  backgroundColor: isProfilePage ? "#9129ac" : "#2E2E2E",
+                }}
+                transition={{
+                  duration: 0.3,
+                  ease: [0.43, 0.13, 0.28, 0.96],
+                }}
+                whileHover={{
+                  backgroundColor: isProfilePage ? "#a84cbd" : "#3A3A3A",
+                }}
+                onClick={() => {
+                  setIsProfilePage(true);
+                }}
+              >
                 <img src="/assets/user_dashboard/user_icon.png" alt="usericonimg" className="employee-icons" style={{ height: "22px", width: "22px" }} />
                 <span>Profile</span>
-              </button>
+              </motion.div>
             </div>
             <div className="employee-toolbar-bottom">
               <center>
                 <hr className="employee-bg-line line-below" />
               </center>
               <div className="employee-toolbar-bottom-options">
-                <div className="employee-icons-container" style={{ marginBottom: "20px" }}>
+                <motion.div
+                  className="employee-icons-container"
+                  style={{ marginBottom: "20px" }}
+                  initial={{ backgroundColor: "#2E2E2E" }}
+                  transition={{
+                    duration: 0.3,
+                    ease: [0.43, 0.13, 0.28, 0.96],
+                  }}
+                  whileHover={{
+                    backgroundColor: "#3A3A3A",
+                  }}
+                >
                   <span className="material-icons employee-icons" style={{ fontSize: "20px", marginLeft: "3px" }}>
                     logout
                   </span>
                   <span>Logout</span>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -179,16 +272,26 @@ export default function EmployeeDashboardMain({ id, username, pageno, vehicleDat
           style={{ width: isMobile ? "100vw" : "85vw" }}
           ref={mainRef}
         >
-          <div
+          <motion.div
             className="menu-button"
+            initial={{
+              backgroundColor: "#2E2E2E",
+            }}
+            transition={{
+              duration: 0.3,
+              ease: [0.43, 0.13, 0.28, 0.96],
+            }}
+            whileHover={{
+              backgroundColor: "#9129ac",
+            }}
             onClick={() => {
               setToolbarShow(!toolbarShow);
             }}
           >
-            <span className="material-icons employee-icons" style={{ userSelect: "none" }}>
+            <span className="material-icons employee-icons" style={{ userSelect: "none", fontSize: "25px" }}>
               menu
             </span>
-          </div>
+          </motion.div>
           <div className="heading-div">
             <h1>DashBoard</h1>
             <h2>Hi {username}. Welcome back to Employee Dashboard.</h2>
@@ -196,17 +299,14 @@ export default function EmployeeDashboardMain({ id, username, pageno, vehicleDat
 
           <ShowPieces cardsArray={cardsArray} />
 
-          <div className="heading-div2">
-            <h1>Pending Vehicles List</h1>
-          </div>
-          <div className="vehicle-heading-buttons">
-            <button>Excel</button>
-            <button>Print</button>
-            <input type="text" id="search" value={searchValue} onChange={(e) => handleSearch(e.target.value)} placeholder="Search by Vehicle Number" />
-          </div>
-
-          <VehicleCards username={username} pageno={pageno} searchValue={searchValue} vehiclesArray={vehiclesArray} setSelectedVehicle={setSelectedVehicle} setMakeVehicleVisible={setMakeVehicleVisible} setCancelVehicleVisible={setCancelVehicleVisible} setCancelError={setCancelError} />
-          <Pagination pagination={pagination} id={id} username={username} pageNo={pageno} lastPage={pagination[4].value} />
+          {!isProfilePage ? (
+            <>
+              <VehicleCards username={username} pageno={pageno} searchValue={searchValue} vehiclesArray={vehiclesArray} setSelectedVehicle={setSelectedVehicle} setMakeVehicleVisible={setMakeVehicleVisible} setCancelVehicleVisible={setCancelVehicleVisible} setCancelError={setCancelError} handleSearch={handleSearch} />
+              <Pagination pagination={pagination} id={id} username={username} pageNo={pageno} lastPage={pagination[4].value} />
+            </>
+          ) : (
+            <EmployeeProfile employeeData={employeedata} profileRef={profileRef} parentRef={containerRef} />
+          )}
         </motion.main>
       </div>
 

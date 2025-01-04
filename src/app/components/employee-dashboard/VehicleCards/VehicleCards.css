@@ -1,3 +1,55 @@
+.heading-div2 {
+    color: var(--dark-gray);
+    width: 93%;
+    padding: 10px;
+    display: flex;
+
+}
+
+.heading-div2 h1 {
+    font-weight: 600;
+    font-size: 20px;
+    border-bottom: 2px solid var(--dark-gray);
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.vehicle-heading-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 86%;
+    margin-top: -25px;
+    flex-wrap: wrap;
+}
+
+.vehicle-heading-buttons button {
+    width: 100px;
+    color: white;
+    background-color: #fd9a1e;
+    padding: 6px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    font-size: larger;
+    font-weight: 500;
+}
+
+#search {
+    width: 40%;
+    background-color: transparent;
+    border-bottom: 2px solid var(--dark-gray);
+    border-radius: none;
+    padding: 4px;
+    color: var(--dark-gray);
+    outline: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#search::placeholder {
+    color: var(--dark-gray);
+    font-weight: 600;
+}
 .overall-cards-container {
     width: 100%;
     display: flex;
@@ -168,4 +220,10 @@
 
 .danger-link:hover::after {
     width: 100%;
+}
+@media (max-width: 768px) {
+    #search {
+        width: 100%;
+        margin-top: 10px;
+    }
 }

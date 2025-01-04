@@ -33,7 +33,7 @@ export default function ShowPieces({ cardsArray }) {
         return (
           <div className="employee-main-show-piece mt-4" key={card.no * Math.random()}>
             <div className="piece-ball" style={{ backgroundColor: card.color, marginLeft: card.no === 1 ? "-10px" : null }}>
-              <img src={card.img} alt={card.alt} className={card.class} />
+              <img src={card.img} style={{ width: "40px", height: "40px" }} alt={card.alt} className={card.class} />
             </div>
             <div className="show-piece-internal">
               <h1 className="piece-heading">{card.heading}</h1>

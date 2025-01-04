@@ -2,6 +2,23 @@
 import { getDB } from "../utils/db";
 import { ObjectId } from "mongodb";
 
+export async function fetchEmployeeData(id) {
+  try {
+    const db = await getDB();
+    const tasksCollection = db.collection("users");
+
+    const result = await tasksCollection.findOne({ _id: new ObjectId(id) });
+    const resultmain = {
+      ...result,
+      _id: result._id.toString(),
+    };
+
+    return resultmain;
+  } catch (err) {
+    return { success: false, message: err.message || "An error occurred" };
+  }
+}
+
 export async function fetchEmployeeTasks(id, pageno) {
   try {
     const db = await getDB();
@@ -188,5 +205,46 @@ export async function taskOverallDetails(id) {
       { no: 2, heading: 0, description: "Cancelled Tasks", img: "/assets/user_dashboard/cancel_icon.png", alt: "cancelledimg", class: "piece1", color: "#e83e3b" },
       { no: 3, heading: 0, description: "Completed Tasks", img: "/assets/user_dashboard/recovered_icon.png", alt: "recoveredimg", class: "piece1", color: "#4aa34d" },
     ];
+  }
+}
+
+export async function editProfile(id, formData) {
+  const firstname = formData.get("firstname");
+  const lastname = formData.get("lastname");
+  const username = formData.get("username");
+  const city = formData.get("city");
+
+  try {
+    const db = await getDB();
+    const users = db.collection("users");
+    const result = await users.updateOne({ _id: new ObjectId(id) }, { $set: { firstname: firstname, lastname: lastname, username: username, city: city } });
+    if (result.matchedCount === 0) {
+      return { success: false, message: "User not found." };
+    }
+    return { success: true, message: "User Updated Successfully." };
+  } catch (err) {
+    return { success: false, message: "Server Error, Please Try Later." };
+  }
+}
+
+export async function changePassword(id, formData) {
+  const currentPassword = formData.get("currentpassword");
+  const newPassword = formData.get("newpassword");
+
+  try {
+    const db = await getDB();
+    const users = db.collection("users");
+    const user = await users.findOne({ _id: new ObjectId(id) });
+    const bcrypt = (await import("bcryptjs")).default;
+    const isValidPassword = await bcrypt.compare(currentPassword, user.password);
+    if (!isValidPassword) {
+      return { success: false, message: "Current Password is incorrect." };
+    } else {
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      await users.updateOne({ _id: new ObjectId(id) }, { $set: { password: hashedPassword } });
+      return { success: true, message: "Password Updated Successfully." };
+    }
+  } catch (err) {
+    return { success: false, message: "Server Error, Please Try Later." };
   }
 }
